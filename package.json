@@ -15,6 +15,14 @@
     ".": {
       "import": "./dist/eslint-config-preact.module.js",
       "require": "./dist/eslint-config-preact.js"
+    },
+    "./flat": {
+      "import": "./dist/flat.module.js",
+      "require": "./dist/flat.js"
+    },
+    "./flat.js": {
+      "import": "./dist/flat.module.js",
+      "require": "./dist/flat.js"
     }
   },
   "files": [
@@ -22,7 +30,7 @@
   ],
   "scripts": {
     "test": "eslint index.js && npm run -s build && vitest run",
-    "build": "microbundle -f es,cjs --target node --no-sourcemap index.js",
+    "build": "microbundle -f es,cjs --target node --no-sourcemap index.js flat.js",
     "prepare": "npm run -s build && npm test",
     "release": "git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
@@ -53,9 +61,11 @@
     "eslint-plugin-react-hooks": "^4.3.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.29.0",
     "@types/eslint": "^8.2.0",
     "@types/node": "^24.0.4",
-    "eslint": "^8.2.0",
+    "eslint": "^8.57.1",
+    "globals": "^16.2.0",
     "microbundle": "^0.14.1",
     "vitest": "^3.2.4"
   },
